@@ -1,0 +1,10 @@
+VIEW CatalogService_interactions_Header AS SELECT
+  interactions_Header_0.ID,
+  interactions_Header_0.PARTNER,
+  interactions_Header_0.LOG_DATA,
+  interactions_Header_0.BPCOUNTRY_code
+FROM app_interactions_interactions_Header AS interactions_Header_0
+WITH ASSOCIATIONS (
+  MANY TO MANY JOIN CatalogService_Interactions_Items AS ITEMS ON (ITEMS.INTHeader_ID = ID),
+  MANY TO ONE JOIN CatalogService_Countries AS BPCOUNTRY ON (BPCOUNTRY.code = BPCOUNTRY_code)
+)
